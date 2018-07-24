@@ -18,8 +18,9 @@ import {
 } from './style';
 
 class Header extends Component {
-  
+
   render () {
+    const {focused, handleInputFocus, handleInputBlur} = this.props;
     return (
       <HeaderWrapper>
         <Logo></Logo>
@@ -33,19 +34,19 @@ class Header extends Component {
           <SearchWrapper>
             <CSSTransition
               timeout={200}
-              in={this.props.focused}
+              in={focused}
               classNames="slide"
             >
               <NavSearch
-                className={this.props.focused ? 'focused' : ''}
-                onFocus={this.props.handleInputFocus}
-                onBlur={this.props.handleInputBlur}
+                className={focused ? 'focused' : ''}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
               ></NavSearch>
             </CSSTransition>
-            <i className={this.props.focused ? 'focused iconfont' : 'iconfont'}>
+            <i className={focused ? 'focused iconfont' : 'iconfont'}>
               &#xe639;
             </i>
-            {this.getListArray(this.props.focused)}
+            {this.getListArray(focused)}
           </SearchWrapper>
         </Nav>
         <Addition>
@@ -70,7 +71,11 @@ class Header extends Component {
           <SearchInfoSwitch>换一批</SearchInfoSwitch>
         </SearchInfoTitle>
         <div>
-          <SearchInfoItem>教育</SearchInfoItem>
+          {
+            this.props.list.map((item) => (
+              <SearchInfoItem key={item}>{item}</SearchInfoItem>
+            ))
+          }
         </div>
       </SearchInfo>
     );
@@ -79,11 +84,13 @@ class Header extends Component {
 
 const mapStateToProps = (state) => ({
   // focused: state.get('header').get('focused')
-  focused: state.getIn(['header', 'focused'])
+  focused: state.getIn(['header', 'focused']),
+  list: state.getIn(['header', 'list'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleInputFocus () {
+    dispatch(actionCreators.getList());
     dispatch(actionCreators.headerSearchFocusAction());
   },
   handleInputBlur () {
