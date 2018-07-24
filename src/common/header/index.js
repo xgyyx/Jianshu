@@ -21,6 +21,7 @@ class Header extends Component {
 
   render () {
     const {focused, handleInputFocus, handleInputBlur} = this.props;
+    
     return (
       <HeaderWrapper>
         <Logo></Logo>
@@ -46,7 +47,7 @@ class Header extends Component {
             <i className={focused ? 'focused iconfont' : 'iconfont'}>
               &#xe639;
             </i>
-            {this.getListArray(focused)}
+            {this.getListArea()}
           </SearchWrapper>
         </Nav>
         <Addition>
@@ -60,22 +61,29 @@ class Header extends Component {
     )
   }
 
-  getListArray (show) {
-    if (!show) {
+  getListArea () {
+    const {focused, list, page, totalPage, mouseEnter, handleMouseEnter, handleMouseLeave, handlePageChange} = this.props;
+    const listToJS = list.toJS();
+    const pageList = [];
+    if (listToJS.length) {
+      for (let i = page * 10; i < (page + 1) * 10; i++) {
+        if (listToJS[i]) {
+          pageList.push(<SearchInfoItem key={listToJS[i]}>{listToJS[i]}</SearchInfoItem>);
+        }
+      }
+    }
+
+    if (!focused && !mouseEnter) {
       return null;
     }
     return (
-      <SearchInfo>
+      <SearchInfo onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <SearchInfoTitle>
           热门搜索
-          <SearchInfoSwitch>换一批</SearchInfoSwitch>
+          <SearchInfoSwitch onClick={() => handlePageChange(page, totalPage)}>换一批</SearchInfoSwitch>
         </SearchInfoTitle>
         <div>
-          {
-            this.props.list.map((item) => (
-              <SearchInfoItem key={item}>{item}</SearchInfoItem>
-            ))
-          }
+          {pageList}
         </div>
       </SearchInfo>
     );
@@ -85,7 +93,10 @@ class Header extends Component {
 const mapStateToProps = (state) => ({
   // focused: state.get('header').get('focused')
   focused: state.getIn(['header', 'focused']),
-  list: state.getIn(['header', 'list'])
+  list: state.getIn(['header', 'list']),
+  page: state.getIn(['header', 'page']),
+  mouseEnter: state.getIn(['header', 'mouseEnter']),
+  totalPage: state.getIn(['header', 'totalPage'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -95,6 +106,16 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleInputBlur () {
     dispatch(actionCreators.headerSearchBlurAction());
+  },
+  handleMouseEnter () {
+    dispatch(actionCreators.mouseEnterAction());
+  },
+  handleMouseLeave () {
+    dispatch(actionCreators.MouseLeaveAction());
+  },
+  handlePageChange (page, totalPage) {
+    const calculatePage = (page + 1) < totalPage ? page + 1 : 1;
+    dispatch(actionCreators.changePageAction(calculatePage));
   }
 });
 

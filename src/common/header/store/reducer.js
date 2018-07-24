@@ -3,7 +3,10 @@ import {fromJS} from 'immutable';
 
 const defaultState = fromJS({
   focused: false,
-  list: []
+  mouseEnter: false,
+  list: [],
+  page: 0,
+  totalPage: 0
 });
 
 export default (state = defaultState, action) => {
@@ -15,6 +18,15 @@ export default (state = defaultState, action) => {
     case actionTypes.HEADER_SEARCH_BLUR:
       return state.set('focused', false);
     case actionTypes.CHANGE_LIST:
-      return state.set('list', action.data);
+      return state.merge({
+        list: action.data,
+        totalPage: action.totalPage
+      });
+    case actionTypes.MOUSE_ENTER:
+      return state.set('mouseEnter', true);
+    case actionTypes.MOUSE_LEAVE:
+      return state.set('mouseEnter', false);
+    case actionTypes.CHANGE_PAGE:
+      return state.set('page', action.page);
   }
 }
