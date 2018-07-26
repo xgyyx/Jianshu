@@ -27,11 +27,26 @@ export const HomeRightPart = styled.div`
 `;
 
 export const TopicWrapper = styled.div`
-  background: orange;
   overflow: hidden;
+  margin-left: -18px;
 `;
 
 export const TopicItem = styled.div`
   float: left;
-  background: red;
+  background: #f7f7f7;
+  line-height: 32px;
+  height: 32px;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  padding-right: 10px;
+  margin: 0 18px 10px 18px;
+  .topic-pic {
+    display: block;
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    border-radius: 4px 0 0 4px;
+  }
 `;

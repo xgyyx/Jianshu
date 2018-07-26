@@ -16,6 +16,7 @@ class Home extends Component {
         <HomeLeftPart>
           <img
             src="https://upload.jianshu.io/admin_banners/web_images/4353/ee6b0e57da4752ae7760f72e496cbc2afe8c40d9.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+            alt=""
             className='banner-img'
           />
           <Topic></Topic>

@@ -1,17 +1,40 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {TopicWrapper, TopicItem} from '../style';
+import {actionCreators} from '../store';
 
 class Topic extends Component {
   render () {
+    const {list, getTopicList} = this.props;
+    
+    getTopicList(list);
+
     return (
       <TopicWrapper>
-        <TopicItem>
-          <img src="https://upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64" alt=""/>
-          简书电影
-        </TopicItem>
+        {
+          list.map((item) => (
+            <TopicItem key={item.id}>
+              <img
+                className='topic-pic'
+                src={item.get('imgUrl')}
+                alt=""/>
+              {item.get('title')}
+            </TopicItem>
+          ))
+        }
       </TopicWrapper>
     )
   }
 }
 
-export default Topic;
+const mapState = (state) => ({
+  list: state.getIn(['home', 'topicList'])
+});
+
+const mapDispatch = (dispatch) => ({
+  getTopicList (list) {
+    (list.size === 0) && dispatch(actionCreators.getTopicListAction());
+  }
+});
+
+export default connect(mapState, mapDispatch)(Topic);
