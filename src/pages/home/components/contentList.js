@@ -1,8 +1,21 @@
 import React, {Component} from 'react';
+import {ListWrapper, ListItem, ListInfo} from '../style';
 
 class ContentList extends Component {
   render () {
-    return <div>ContentList</div>
+    return (
+      <ListWrapper>
+        <ListItem>
+          <a href="">
+            <img
+              src=""
+              alt=""
+            />
+          </a>
+          <ListInfo></ListInfo>
+        </ListItem>
+      </ListWrapper>
+    )
   }
 }
 

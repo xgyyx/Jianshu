@@ -15,7 +15,6 @@ export const HomeLeftPart = styled.div`
     height: 270px;
     border-radius: 6px;
     font-size: 0;
-    margin-bottom: 35px;
   }
 `;
 
@@ -28,7 +27,9 @@ export const HomeRightPart = styled.div`
 
 export const TopicWrapper = styled.div`
   overflow: hidden;
+  margin-top: 35px;
   margin-left: -18px;
+  margin-right: -18px;
 `;
 
 export const TopicItem = styled.div`
@@ -47,6 +48,14 @@ export const TopicItem = styled.div`
     width: 32px;
     height: 32px;
     margin-right: 10px;
-    border-radius: 4px 0 0 4px;
+    border-radius: 3px 0 0 3px;
   }
 `;
+
+export const ListWrapper = styled.div`
+  margin-top: 35px;
+`;
+
+export const ListItem = styled.div``;
+
+export const ListInfo = styled.div``;

@@ -11,6 +11,7 @@ class Topic extends Component {
 
     return (
       <TopicWrapper>
+        {console.log(list)}
         {
           list.map((item) => (
             <TopicItem key={item.id}>
