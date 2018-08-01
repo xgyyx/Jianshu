@@ -21,7 +21,7 @@ export const HomeLeftPart = styled.div`
 export const HomeRightPart = styled.div`
   width: 280px;
   float: right;
-  padding-top: 30px;
+  margin-top: 30px;
   background: orange;
 `;
 
@@ -54,8 +54,61 @@ export const TopicItem = styled.div`
 
 export const ListWrapper = styled.div`
   margin-top: 35px;
+  border-top: 1px solid #dcdcdc;
 `;
 
-export const ListItem = styled.div``;
+export const ListItem = styled.div`
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #dcdcdc;
+  .list-pic {
+    display: block;
+    float: right;
+    width: 125px;
+    height: 100px;
+    border-radius: 5px;
+  }
+`;
 
-export const ListInfo = styled.div``;
+export const ListInfo = styled.div`
+  width: 500px;
+  float: left;
+  .title {
+    line-height: 27px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  .desc {
+    line-height: 24px;
+    font-size: 13px;
+    color: #999;
+  }
+`;
+
+export const RecommendWrapper = styled.div`
+  width: 280px;
+  background: #fff;
+  padding-bottom: 10px;
+`;
+
+export const RecommendItem = styled.div`
+  width: 280px;
+  height: 50px;
+  background: url(${(props) => props.imgUrl});
+  background-size: contain;
+  margin-bottom: 5px;
+`;
+
+export const LoadMore = styled.div`
+  margin: 30px 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background: #a5a5a5;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+`;

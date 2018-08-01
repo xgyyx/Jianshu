@@ -5,16 +5,13 @@ import {actionCreators} from '../store';
 
 class Topic extends Component {
   render () {
-    const {list, getTopicList} = this.props;
     
-    getTopicList(list);
 
     return (
       <TopicWrapper>
-        {console.log(list)}
         {
-          list.map((item) => (
-            <TopicItem key={item.id}>
+          this.props.list.map((item) => (
+            <TopicItem key={item.get('id')}>
               <img
                 className='topic-pic'
                 src={item.get('imgUrl')}
@@ -25,6 +22,11 @@ class Topic extends Component {
         }
       </TopicWrapper>
     )
+  }
+
+  componentDidMount () {
+    const {list, getTopicList} = this.props;
+    getTopicList(list);
   }
 }
 

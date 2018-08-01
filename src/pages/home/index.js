@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import Topic from './components/topic';
 import ContentList from './components/contentList';
 import Recommend from './components/recommend';
@@ -29,6 +30,10 @@ class Home extends Component {
       </HomeWrapper>
     )
   }
+
+  componentDidMount () {};
 }
 
-export default Home;
+const mapDispatch = (dispatch) => ({});
+
+export default connect(null, mapDispatch)(Home);

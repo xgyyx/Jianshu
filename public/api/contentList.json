@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "data": {
+    "articleList": [{
+      "id": 4,
+      "title": "像大牛一样写代码: 31个Android 开发者工具",
+      "desc": "原文：Code like a pro: 31 tools for Android app developers。文中部分工具是收费的，但是绝大多...",
+      "imgUrl": "https://upload-images.jianshu.io/upload_images/7043118-5b82a50ff51f9eca?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+    }, {
+      "id": 5,
+      "title": "像大牛一样写代码: 31个Android 开发者工具",
+      "desc": "原文：Code like a pro: 31 tools for Android app developers。文中部分工具是收费的，但是绝大多...",
+      "imgUrl": "https://upload-images.jianshu.io/upload_images/7043118-5b82a50ff51f9eca?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+    }, {
+      "id": 6,
+      "title": "像大牛一样写代码: 31个Android 开发者工具",
+      "desc": "原文：Code like a pro: 31 tools for Android app developers。文中部分工具是收费的，但是绝大多...",
+      "imgUrl": "https://upload-images.jianshu.io/upload_images/7043118-5b82a50ff51f9eca?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+    }, {
+      "id": 7,
+      "title": "像大牛一样写代码: 31个Android 开发者工具",
+      "desc": "原文：Code like a pro: 31 tools for Android app developers。文中部分工具是收费的，但是绝大多...",
+      "imgUrl": "https://upload-images.jianshu.io/upload_images/7043118-5b82a50ff51f9eca?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+    }]
+  }
+}

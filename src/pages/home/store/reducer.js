@@ -2,7 +2,8 @@ import {fromJS} from 'immutable';
 import * as actionTypes from './actionTypes';
 
 const defaultState = fromJS({
-  topicList: []
+  topicList: [],
+  contentList: []
 });
 
 export default (state = defaultState, action) => {
@@ -10,6 +11,12 @@ export default (state = defaultState, action) => {
     default:
       return state;
     case actionTypes.CHANGE_TOPIC_LIST:
-      return state.set('topicList', action.data)
+      return state.merge({
+        topicList: fromJS(action.topicList),
+        contentList: fromJS(action.contentList)
+      });
+    case actionTypes.ADD_CONTENT_LIST:
+      console.log(state.get('contentList').concat(action.list));
+      return state.set('contentList', state.get('contentList').concat(action.list));
   }
 }
