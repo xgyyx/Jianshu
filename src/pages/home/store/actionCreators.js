@@ -33,3 +33,8 @@ export const getMoreListAction = () => ((dispatch) => {
       console.log(e);
     });
 });
+
+export const toggleShowTopChangeAction = (flag) => ({
+  type: actionTypes.TOGGLE_SHOW_TOP_CHANGE,
+  flag
+});

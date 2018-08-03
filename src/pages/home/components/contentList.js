@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {ListWrapper, ListItem, ListInfo, LoadMore} from '../style';
 import {connect} from 'react-redux';
 import {actionCreators} from '../store';
+import {Link} from 'react-router-dom';
 
-class ContentList extends Component {
+class ContentList extends PureComponent {
   render () {
     const {list, getMorelist} = this.props;
 
@@ -11,15 +12,15 @@ class ContentList extends Component {
       <ListWrapper>
         {
           list.map((item, index) => (
-            <ListItem key={index}>
-              <a href="">
+            <Link key={index} to='/detail'>
+              <ListItem>
                 <img className="list-pic" src={item.get('imgUrl')} alt="" />
-              </a>
-              <ListInfo>
-                <h3 className="title">{item.get('title')}</h3>
-                <p className="desc">{item.get('desc')}</p>
-              </ListInfo>
-            </ListItem>
+                <ListInfo>
+                  <h3 className="title">{item.get('title')}</h3>
+                  <p className="desc">{item.get('desc')}</p>
+                </ListInfo>
+              </ListItem>
+            </Link>
           ))
         }
         <LoadMore onClick={getMorelist}>阅读更多</LoadMore>
