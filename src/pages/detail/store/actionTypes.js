@@ -1,0 +1,1 @@
+export const CHANGE_DETAIL_ACTION = 'change_detail_action';
