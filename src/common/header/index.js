@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {connect} from 'react-redux';
 import {actionCreators} from './store';
+import {actionCreators as loginActionCreators} from '../../pages/login/store';
 import {Link} from 'react-router-dom';
 import {
   HeaderWrapper,
@@ -21,7 +22,7 @@ import {
 class Header extends Component {
 
   render () {
-    const {focused, handleInputFocus, handleInputBlur, list} = this.props;
+    const {focused, handleInputFocus, handleInputBlur, list, login, logout} = this.props;
     
     return (
       <HeaderWrapper>
@@ -32,7 +33,11 @@ class Header extends Component {
           <NavItem className='right'>
             <i className='iconfont'>&#xe636;</i>
           </NavItem>
-          <NavItem className='right'>登录</NavItem>
+          {
+            login ?
+              <NavItem onClick={logout} className='right'>退出</NavItem> :
+              <Link to='/login'><NavItem className='right'>登录</NavItem></Link>
+          }
           <SearchWrapper>
             <CSSTransition
               timeout={200}
@@ -102,7 +107,8 @@ const mapStateToProps = (state) => ({
   list: state.getIn(['header', 'list']),
   page: state.getIn(['header', 'page']),
   mouseEnter: state.getIn(['header', 'mouseEnter']),
-  totalPage: state.getIn(['header', 'totalPage'])
+  totalPage: state.getIn(['header', 'totalPage']),
+  login: state.getIn(['login', 'loginState'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -129,6 +135,9 @@ const mapDispatchToProps = (dispatch) => ({
     icon.style.transform = 'rotate(' + (originAngle + 360) + 'deg)';
     const calculatePage = (page + 1) < totalPage ? page + 1 : 1;
     dispatch(actionCreators.changePageAction(calculatePage));
+  },
+  logout () {
+    dispatch(loginActionCreators.logoutAction());
   }
 });
 
